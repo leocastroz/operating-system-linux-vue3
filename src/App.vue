@@ -1,47 +1,74 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+// import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
+import NavHeader from './components/NavHeader.vue'
+import NavLeft from './components/NavLeft.vue'
+import DraggableDiv from './components/DraggableDiv.vue';
+
+const exibirModal = ref(false);
+
+const lidarComEvento = () => {
+  exibirModal.value = true;
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <section>
+    <div>
+      <NavHeader />
+      <NavLeft @meu-evento="lidarComEvento" />
+      <DraggableDiv v-show="false"/>
+      <!-- <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+      <RouterView /> -->
+      <div v-if="exibirModal" class="modal">
+        <div class="modal-content">
+          <h2>Minha Modal</h2>
+          <p @click="exibirModal = false">fechar</p>
+          <!-- Modal content -->
+        </div>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </section>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+section {
+  width: 100%;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: content-box;
+  background-image: url('./assets/ubt.png');
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+nav {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: red;
 }
 </style>
