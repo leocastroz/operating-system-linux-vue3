@@ -1,5 +1,10 @@
 <script>
+import DataTime from './DataTime.vue'
+
 export default {
+  components: {
+    DataTime
+  },
   data() {
     return {
       modalClickTop: true
@@ -23,7 +28,8 @@ export default {
       <p class="activities">Activities</p>
     </div>
     <div>
-      <p>Wed May 31 12:11 PM</p>
+      <DataTime />
+      <!-- <p>Wed May 31 12:11 PM</p> -->
     </div>
     <div class="icons">
       <img width="16" height="16" src="https://archlinux-drab.vercel.app/themes/Yaru/status/network-wireless-signal-good-symbolic.svg" alt="">
