@@ -155,11 +155,7 @@ export default {
 	</div>
 </template>
 
-
-
 <style scoped>
-
-
 .sub-items {
 	padding: 5px;
 }
@@ -177,7 +173,8 @@ nav a div {
 }
 
 nav a div:hover {
-	background-color: #d54f20;
+	background-color: #fcb14d;
+	color: #000;
 }
 
 nav a div img {
@@ -191,11 +188,7 @@ nav a {
 }
 
 .container {
-	position: absolute;
-	top: 100px;
-	left: 10%;
-	min-width: 900px;
-	height: 300px;  
+	position: fixed;
 	background-color: #eaeaea;
 	border-radius: 5px;
   box-shadow: 0 0 10px 0 #201f1f;
