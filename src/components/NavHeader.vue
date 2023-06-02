@@ -1,3 +1,22 @@
+<script>
+export default {
+  data() {
+    return {
+      modalClickTop: true
+    }
+  },
+  methods: {
+    modalTop() {
+      this.$emit('meu-modal')
+      this.modalClickTop = false;
+    },
+    ModalHidden() {
+      this.$emit('meu-modal-hidden')
+      this.modalClickTop = true;
+    }
+  }
+}
+</script>
 <template>
   <header>
     <div>
@@ -10,8 +29,11 @@
       <img width="16" height="16" src="https://archlinux-drab.vercel.app/themes/Yaru/status/network-wireless-signal-good-symbolic.svg" alt="">
       <img width="16" height="16" src="https://archlinux-drab.vercel.app/themes/Yaru/status/audio-volume-medium-symbolic.svg" alt="">
       <img width="16" height="16" src="https://archlinux-drab.vercel.app/themes/Yaru/status/battery-good-symbolic.svg" alt="">
-      <span class="material-symbols-outlined">
+      <span v-if="modalClickTop" @click="modalTop" class="material-symbols-outlined">
         arrow_drop_down
+      </span>
+      <span v-else @click="ModalHidden" class="material-symbols-outlined">
+        arrow_left
       </span>
     </div>
   </header>
